@@ -1,17 +1,17 @@
 import UIKit
 
 
-class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+public class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    typealias DataType = UIStaticCollectionViewData
+    public typealias DataType = UIStaticCollectionViewData
     
-    var data = [DataType]() {
+    public var data = [DataType]() {
         didSet {
             reloadData()
         }
     }
     
-    override var bounds: CGRect {
+    public override var bounds: CGRect {
         willSet(newValue) {
             if bounds.size != newValue.size {
                 collectionViewLayout.invalidateLayout()
@@ -21,7 +21,7 @@ class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICollection
     
     
     
-    override init(frame: CGRect, collectionViewLayout: UICollectionViewLayout) {
+    public override init(frame: CGRect, collectionViewLayout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: collectionViewLayout)
         
         register(CellType.self, forCellWithReuseIdentifier: CellType.identifier)
@@ -38,12 +38,12 @@ class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICollection
     
     
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = dequeueReusableCell(withReuseIdentifier: CellType.identifier, for: indexPath) as! CellType
         cell.setData(data: data[indexPath.row] as! CellType.DataType)
@@ -51,7 +51,7 @@ class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICollection
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CellType.size(frame.size)
     }

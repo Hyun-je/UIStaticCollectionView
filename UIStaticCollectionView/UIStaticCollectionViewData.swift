@@ -1,4 +1,4 @@
 import UIKit
 
 
-protocol UIStaticCollectionViewData {}
+public protocol UIStaticCollectionViewData {}

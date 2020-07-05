@@ -1,7 +1,7 @@
 import UIKit
 
 
-protocol UIStaticCollectionViewCell: UICollectionViewCell {
+public protocol UIStaticCollectionViewCell: UICollectionViewCell {
     
     associatedtype DataType: UIStaticCollectionViewData
     
