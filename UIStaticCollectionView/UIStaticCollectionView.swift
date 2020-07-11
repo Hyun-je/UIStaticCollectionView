@@ -56,4 +56,8 @@ public class UIStaticCollectionView<CellType: UIStaticCollectionViewCell>: UICol
         return CellType.size(frame.size)
     }
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return CellType.insets(frame.size)
+    }
+    
 }
